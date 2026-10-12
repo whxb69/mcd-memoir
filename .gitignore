@@ -1,0 +1,17 @@
+# 隐私与安全
+probe.py
+fetch.py
+fetch_log.txt
+data/
+profile.json
+.DS_Store
+tools.json
+# book.html 为demo产物，需要入库展示；用户本地生成后可自行决定是否分享
+
+# 决策文档（可选是否入库，按需移除注释）
+POLISH_PLAN.md
+GROWTH_PLAN.md
+LAYER1_PLAN.md
+MASTER_PLAN.md
+PLAN.md
+FEASIBILITY.md

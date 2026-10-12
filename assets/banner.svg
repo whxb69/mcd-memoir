@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-label="麦门人生回忆录">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFC72C"/>
+      <stop offset="1" stop-color="#F5B800"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="360" fill="url(#bg)"/>
+  <!-- golden arches watermark -->
+  <path d="M 1050 40 Q 1090 -90 1130 40" fill="none" stroke="#DA291C" opacity=".12" stroke-width="26" stroke-linecap="round"/>
+  <path d="M 70 320 Q 110 190 150 320" fill="none" stroke="#DA291C" opacity=".12" stroke-width="26" stroke-linecap="round"/>
+  <!-- open book -->
+  <g transform="translate(470 110)">
+    <path d="M 0 30 Q 65 -10 130 30 L 130 130 Q 65 95 0 130 Z" fill="#FFF8E7" stroke="#C99700" stroke-width="3"/>
+    <path d="M 130 30 Q 195 -10 260 30 L 260 130 Q 195 95 130 130 Z" fill="#FFF4D6" stroke="#C99700" stroke-width="3"/>
+    <line x1="130" y1="30" x2="130" y2="130" stroke="#C99700" stroke-width="2.5"/>
+    <line x1="22" y1="52" x2="108" y2="42" stroke="#EBDDC0" stroke-width="5" stroke-linecap="round"/>
+    <line x1="22" y1="74" x2="108" y2="64" stroke="#EBDDC0" stroke-width="5" stroke-linecap="round"/>
+    <line x1="22" y1="96" x2="88" y2="88" stroke="#EBDDC0" stroke-width="5" stroke-linecap="round"/>
+    <line x1="152" y1="42" x2="238" y2="52" stroke="#EBDDC0" stroke-width="5" stroke-linecap="round"/>
+    <line x1="152" y1="64" x2="238" y2="74" stroke="#EBDDC0" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 152 88 A 11 15 0 0 1 174 74 A 11 15 0 0 1 196 88" fill="none" stroke="#DA291C" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <text x="600" y="70" text-anchor="middle" font-family="Georgia,'Songti SC',serif" font-size="52" font-weight="800" fill="#2B1D0E">麦门人生回忆录</text>
+  <text x="600" y="118" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="20" fill="#2B1D0E" opacity=".75">MCD MEMOIR · 你的每一单，都值得一页纸</text>
+  <text x="600" y="300" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="17" fill="#B71C1C" font-weight="700">一本用麦当劳官方 MCP 真实数据装订的翻页书 · 不是统计报表，是叙事</text>
+  <text x="600" y="330" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif" font-size="14" fill="#2B1D0E" opacity=".65">积分花园 · 忏悔室 · 人格鉴定书 · 节气勋章墙 · 麦门文学 · 失踪人口</text>
+</svg>

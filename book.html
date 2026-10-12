@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麦门人生回忆录 · 第一季</title>
+<style>
+:root { --gold:#FFC72C; --red:#DA291C; --cream:#FFF8E7; --ink:#2B1D0E; --muted:#8A7B60; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-snap-type:y mandatory; scroll-behavior:smooth; }
+body { font-family:-apple-system,'PingFang SC','Noto Sans SC',sans-serif; background:#E8E0CC; color:var(--ink); }
+.page { min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:8vh 28px 10vh; background:var(--cream); position:relative; overflow:hidden; }
+.page.dark { background:#181410; color:#F5EDD8; }
+.page.cover { background:var(--gold); }
+.pin { position:absolute; top:24px; left:50%; transform:translateX(-50%); width:56px; height:8px; border-radius:4px; background:rgba(43,29,14,.14); }
+.page.dark .pin { background:rgba(245,237,216,.18); }
+h1 { font-size:clamp(34px,8vw,54px); font-weight:800; letter-spacing:2px; }
+h2 { font-size:clamp(24px,5.4vw,32px); font-weight:800; margin-bottom:18px; letter-spacing:1px; }
+.cover-badge { background:var(--red); color:#fff; font-size:12px; letter-spacing:4px; padding:7px 16px; border-radius:20px; margin-bottom:22px; }
+.cover-sub { font-size:clamp(15px,3.8vw,19px); margin:18px 0 26px; line-height:1.9; opacity:.85; text-align:center; }
+.cover-meta { font-size:13px; opacity:.65; letter-spacing:2px; }
+.flip-hint { position:absolute; bottom:4vh; font-size:13px; opacity:.55; animation:bob 1.6s infinite ease-in-out; }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+.lead { font-size:15px; line-height:1.9; opacity:.8; text-align:center; margin-bottom:8px; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(86px,120px)); gap:14px; margin:10px 0 18px; }
+.stat { background:#fff; border:1px solid rgba(43,29,14,.1); border-radius:14px; padding:14px 6px; text-align:center; }
+.stat b { display:block; font-size:clamp(22px,5vw,30px); font-weight:800; color:var(--red); }
+.stat span { font-size:12px; color:var(--muted); }
+.kicker { font-size:12px; letter-spacing:3px; color:var(--red); font-weight:700; margin-bottom:10px; }
+.lines p { font-size:clamp(14px,3.6vw,16.5px); line-height:2; margin:4px 0; text-align:center; }
+.food { width:min(58vw,240px); border-radius:16px; margin:6px 0 14px; box-shadow:0 10px 30px rgba(43,29,14,.18); background:#fff; }
+.combo { margin-top:12px; font-size:13px; color:var(--muted); background:rgba(255,199,44,.35); padding:8px 14px; border-radius:10px; max-width:340px; text-align:center; }
+.note { margin-top:16px; font-size:11px; color:var(--muted); letter-spacing:.5px; }
+.big-save { font-size:clamp(20px,5vw,28px); margin-top:22px; }
+.big-save b { color:var(--red); font-size:1.4em; font-weight:800; }
+.bal { width:min(84vw,360px); margin-top:14px; }
+.bal-row { margin:14px 0; }
+.bal-row span { font-size:13px; color:var(--muted); }
+.bar { height:34px; border-radius:10px; width:0; transition:width 1.2s cubic-bezier(.2,.7,.2,1); position:relative; margin-top:6px; }
+.bar b { position:absolute; right:10px; top:50%; transform:translateY(-50%); font-size:14px; font-weight:700; }
+.bar.orig { background:#D8CDB4; max-width:100%; }
+.bar.paid { background:var(--red); }
+.bar.paid b { color:#fff; }
+.on .bar { width:calc(var(--w) + 60px); }
+.grave { text-align:center; margin:8px 0; }
+.grave b { font-size:clamp(52px,14vw,88px); font-weight:800; color:var(--gold); }
+.grave span { font-size:20px; opacity:.7; margin-left:6px; }
+.grave-line { font-size:16px; opacity:.75; margin:8px 0 20px; }
+.grave-line2 { font-size:15px; line-height:2; text-align:center; opacity:.9; }
+.grave-line2 b { color:var(--gold); font-size:1.25em; }
+.foot { font-size:11.5px; color:var(--muted); text-align:center; line-height:1.9; margin-top:20px; }
+.bright { color:#B7A98A; }
+.badges { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:420px; margin-top:12px; }
+.tray { background:#F5EBCF; border-radius:20px; padding:22px 26px 16px; box-shadow:inset 0 2px 10px rgba(43,29,14,.08); max-width:420px; }
+.coins { display:flex; flex-wrap:wrap; gap:16px 14px; justify-content:center; }
+.coin-wrap { animation:coin-in .5s cubic-bezier(.2,.9,.3,1.4) backwards; animation-delay:calc(var(--i) * 60ms); }
+.coin-wrap svg { filter:drop-shadow(0 3px 4px rgba(43,29,14,.22)); }
+@keyframes coin-in { from { transform:scale(.55) rotate(-8deg); opacity:0; } to { transform:scale(1) rotate(0); opacity:1; } }
+.coupons { display:grid; grid-template-columns:repeat(2,minmax(140px,190px)); gap:10px; margin-top:14px; width:100%; max-width:420px; }
+.coupon { background:#fff; border:1px dashed #D8C8A2; border-radius:10px; padding:10px 12px; display:flex; flex-direction:column; gap:2px; }
+.coupon b { font-size:12.5px; line-height:1.4; }
+.coupon span { color:var(--red); font-weight:800; font-size:15px; }
+.coupon i { font-size:10px; color:var(--muted); font-style:normal; }
+.cta-coupon { background:#fff; border-radius:16px; padding:20px 26px; margin:16px 0; display:flex; flex-direction:column; gap:6px; align-items:center;
+  box-shadow:0 14px 40px rgba(218,41,28,.18); border-top:6px solid var(--red); max-width:340px; }
+.cc-name { font-size:17px; font-weight:700; }
+.cc-price { font-size:26px; font-weight:800; color:var(--red); }
+.cc-exp { font-size:11px; color:var(--muted); }
+.about { max-width:420px; font-size:13px; line-height:2.1; opacity:.8; text-align:center; margin-bottom:14px; }
+.logo-mark { width:64px; height:64px; border-radius:50%; background:var(--gold); color:var(--red); font-size:40px; font-weight:900;
+  display:flex; align-items:center; justify-content:center; margin-top:10px; font-family:Georgia,serif; }
+.page.gold { background:linear-gradient(180deg,#FFE08A,#FFC72C); }
+.cert { background:#fff; border-radius:22px; padding:26px 26px 18px; max-width:400px; width:88vw;
+  box-shadow:0 18px 50px rgba(43,29,14,.22); text-align:center; }
+.cert-line { font-size:13px; color:var(--muted); margin-bottom:10px; }
+.cert-title { font-size:clamp(26px,7vw,34px); font-weight:900; color:var(--red); letter-spacing:2px; margin-bottom:6px; }
+.cert-tags { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:12px 0 8px; }
+.cert-tags span { background:rgba(255,199,44,.4); border-radius:14px; padding:5px 12px; font-size:12px; font-weight:700; }
+.cert-note { font-size:14px; margin-top:6px; }
+.cert-note b { color:var(--red); font-size:1.3em; }
+.page.lit { background:var(--red); color:#FFF8E7; }
+.lit p { font-size:clamp(26px,7vw,40px); font-weight:900; line-height:1.7; text-align:center; letter-spacing:2px; }
+.lit-small { font-size:clamp(14px,3.8vw,17px) !important; font-weight:400 !important; opacity:.85; margin-top:20px; letter-spacing:1px; }
+.lit-motto { font-size:clamp(34px,9vw,48px) !important; margin-top:26px; letter-spacing:6px; }
+.lit .foot { color:rgba(255,248,231,.72); }
+.polaroid { background:#fff; padding:10px 10px 6px; border-radius:6px; box-shadow:0 8px 24px rgba(43,29,14,.16);
+  transform:rotate(-1.2deg); margin:6px 0 14px; position:relative; }
+.polaroid .food { margin:0; box-shadow:none; display:block; }
+.polaroid-date { position:absolute; left:14px; bottom:8px; font-size:10.5px; color:#B4A78F; letter-spacing:1px; }
+.seal { position:absolute; right:18px; bottom:16px; opacity:.16; transform:rotate(-12deg); pointer-events:none; }
+.cert { position:relative; }
+.stat.major { border-top:4px solid var(--gold); }
+.stat.major b { color:var(--red); }
+.stat.minor { background:transparent; border:none; box-shadow:none; }
+.stat.minor b { color:var(--ink); opacity:.55; font-size:clamp(18px,4vw,24px); }
+.stat.minor span { opacity:.7; }
+.bar.orig { background:#EBDDC0; max-width:100%; }
+.bar.orig .gap { position:absolute; right:0; top:0; height:100%; width:var(--gap);
+  background:repeating-linear-gradient(135deg, #C99700 0 6px, #B8860B 6px 12px); border-radius:0 10px 10px 0; }
+.save-pct { font-size:.55em; opacity:.6; font-weight:400; }
+h1 { font-family:Georgia,'Songti SC','Noto Serif SC',serif; }
+.cover-arches { margin:14px 0 4px; }
+.flip-hint { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.flip-hint span { font-size:13px; opacity:.75; letter-spacing:2px; }
+.cta-coupon { position:relative; overflow:hidden; padding-left:40px !important; }
+.cta-coupon::before { content:''; position:absolute; left:14px; top:0; bottom:0; width:2px;
+  background:radial-gradient(circle at 50% 9px, transparent 5px, var(--red) 5.5px, var(--red) 100%);
+  background-size:2px 22px; background-repeat:repeat-y; }
+.tombs { display:flex; gap:10px; align-items:flex-end; justify-content:center; margin:6px 0 2px; }
+.tomb { opacity:.9; }
+.tomb-more { color:#C99700; font-size:18px; font-weight:700; margin-left:-2px; line-height:1; }
+.colophon-line { width:120px; height:1px; background:#C99700; margin:14px 0 4px; opacity:.6; }
+.made-with { font-size:10px; letter-spacing:4px; color:var(--ink-2, #8A7B60); margin-top:8px; opacity:.75; }
+.stamp-tbc { position:absolute; top:7vh; right:8vw; border:3px solid var(--red); color:var(--red);
+  font-size:clamp(15px,4vw,19px); font-weight:800; letter-spacing:5px; padding:8px 14px;
+  border-radius:8px; transform:rotate(8deg); opacity:.82; }
+.cover-hook { margin-top:14px; font-size:clamp(13px,3.4vw,15px); color:var(--red); font-weight:700; letter-spacing:1px; }
+.cover-hook b { border-bottom:2px solid var(--red); padding:0 2px; }
+.hook-q { display:flex; align-items:flex-start; gap:16px; max-width:400px; width:88vw;
+  padding:18px 0; border-bottom:1px solid var(--line, #EBDDC0); }
+.hook-q:last-of-type { border-bottom:none; }
+.hook-q i { font-family:Georgia,'Songti SC',serif; font-style:normal; font-size:34px; font-weight:800; color:var(--gold); line-height:1; }
+.hook-q p { font-size:clamp(14px,3.7vw,16px); line-height:1.9; margin:0; text-align:left; }
+.sin-card { background:var(--red); color:#FFF8E7; border-radius:14px; padding:18px 20px 14px;
+  width:min(86vw,400px); margin:6px 0; position:relative; text-align:left;
+  animation:fade-up .5s ease backwards; animation-delay:calc(var(--i) * 70ms); }
+@keyframes fade-up { from { opacity:0; transform:translateY(12px); } }
+.sin-no { position:absolute; left:0; top:16px; writing-mode:vertical-lr; letter-spacing:3px;
+  font-size:10px; color:var(--gold); font-weight:700; }
+.sin-card { padding-left:34px; }
+.sin-name { display:block; font-size:17px; font-weight:800; margin-bottom:6px; color:#FFE08A; }
+.sin-card .sin-name { color:#FFE08A; }
+.sin-text { font-size:14px; line-height:1.9; margin:0 0 8px; }
+.sin-src { font-size:10.5px; opacity:.65; }
+.absolve-card { background:var(--cream); border:2px solid var(--gold); border-radius:14px;
+  padding:18px 20px 14px; width:min(86vw,400px); margin:12px 0 4px; position:relative; text-align:left; }
+.absolve-card .sin-name { color:var(--red); }
+.absolve-card .sin-text { color:var(--ink); }
+.seal-gold { position:absolute; right:14px; bottom:34px; border:3px solid var(--gold); color:var(--gold);
+  font-weight:800; font-size:15px; letter-spacing:3px; padding:5px 10px; border-radius:6px;
+  transform:rotate(-10deg); opacity:.85; }
+.absolve-motto { font-size:clamp(15px,4vw,18px); font-weight:800; text-align:center;
+  line-height:1.9; margin-top:16px; color:var(--red); }
+.lit-quote { display:none; }
+.lit-quote.on { display:block; animation:lit-fade .25s ease; }
+@keyframes lit-fade { from { opacity:0; transform:translateY(8px); } }
+.lit-quote p { font-size:clamp(26px,7vw,40px); font-weight:900; line-height:1.7; text-align:center; letter-spacing:2px; margin:0; }
+.lit-note { font-size:13px !important; font-weight:400 !important; opacity:.8; letter-spacing:1px; margin-top:14px !important; }
+.lit-reroll { position:absolute; right:8vw; bottom:20vh; width:44px; height:44px; border-radius:50%;
+  background:var(--gold); color:var(--ink); border:none; font-size:20px; font-weight:800; cursor:pointer;
+  transition:transform .2s; box-shadow:0 4px 14px rgba(43,29,14,.3); }
+.lit-reroll:hover { transform:rotate(45deg); }
+.lit-reroll:active { transform:scale(.9); }
+.coin-progress { width:min(84vw,360px); height:12px; border-radius:6px; background:#EBDDC0;
+  position:relative; margin:18px 0 6px; overflow:hidden; }
+.cp-fill { position:absolute; left:0; top:0; bottom:0; width:var(--p); background:var(--gold); border-radius:6px;
+  transition:width 1.2s cubic-bezier(.2,.7,.2,1); }
+.page.on .cp-fill { width:var(--p); }
+.cp-label { position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  font-size:10.5px; font-weight:700; color:var(--ink); }
+.ghost-coin-wrap { display:flex; align-items:center; gap:10px; margin-top:8px; opacity:.75; }
+.ghost-coin-wrap span { font-size:12px; color:#6E5F45; font-weight:700; }
+.cc-tag { background:var(--gold); color:var(--ink); font-size:11px; font-weight:800; letter-spacing:2px;
+  padding:4px 12px; border-radius:12px; }
+.cta-coupon { align-items:center; gap:8px; }
+.page.warn { background:#2B1D0E; color:#FFF8E7; }
+.missing { text-align:center; margin:10px 0; }
+.missing b { font-size:clamp(56px,15vw,92px); font-weight:900; color:var(--gold); }
+.missing span { font-size:20px; opacity:.7; margin-left:6px; }
+.missing-line { font-size:15px; margin-top:18px; color:var(--gold); font-weight:700; text-align:center; }
+.lead.dim { opacity:.6; font-size:14px; }
+.missing .lead b, .lead b { color:var(--red); }
+.page.warn .lead b { color:var(--gold); }
+</style>
+</head>
+<body>
+<section class="page cover"><div class="pin"></div>
+      <div class="cover-badge">MCD MEMOIR · 第一季</div>
+      <h1>麦门人生回忆录</h1>
+      <svg class="cover-arches" viewBox="0 0 47 34" width="47" height="34" aria-hidden="true">
+        <path d="M 4 30 Q 13.8 -18 23.5 30 Q 33.2 -18 43 30" fill="none" stroke="#DA291C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="cover-sub">用 10 张真实订单<br>装订成 114 天的麦门时光</p>
+      <p class="cover-hook">这本书的 <b>14</b> 页，有一样你扔掉的东西，其实开成了花。</p>
+      <div class="cover-meta">2026-05-15 — 2026-09-07</div>
+      <div class="flip-hint">
+        <svg viewBox="0 0 36 32" width="34" height="30" aria-hidden="true">
+          <path d="M 4 5 Q 18 13 32 5 L 32 24 Q 18 32 4 24 Z" fill="#B71C1C"/>
+          <path d="M 18 9 L 18 28" stroke="#FFC72C" stroke-width="2" stroke-linecap="round"/>
+          <path d="M 9 14 Q 18 19 27 14" stroke="#FFC72C" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span>往下翻</span>
+      </div></section>
+<section class="page plain"><div class="pin"></div>
+      <div class="kicker">开卷 · 三个问题</div>
+      <h2>翻开之前，先回答我</h2>
+      <div class="hook-q"><i>①</i><p>60% 的麦门人生，你给了同一个人气超值四件套随心选。这是专一，还是固执？</p></div>
+      <div class="hook-q"><i>②</i><p>你已经 35 天没有推开那扇门了——麦门想你了。</p></div>
+      <div class="hook-q"><i>③</i><p>1135.6 个积分被你随手弄丢了——后来，它们在花园里开成了花。</p></div>
+      <p class="foot">三个问题的答案，散落在后面的每一页。先看你的档案 ↓</p></section>
+<section class="page "><div class="pin"></div>
+      <h2>序章 · 你的麦门档案</h2>
+      <div class="grid">
+        <div class="stat major"><b data-n="10">0</b><span>笔订单</span></div>
+        <div class="stat major"><b data-n="325.3" data-f="1">0</b><span>总消费(元)</span></div>
+        <div class="stat major"><b data-n="114">0</b><span>陪伴天数</span></div>
+        <div class="stat minor"><b data-n="2">0</b><span>家门店</span></div>
+        <div class="stat minor"><b data-n="4">0</b><span>种商品</span></div>
+        <div class="stat minor"><b data-n="19.9" data-f="1">0</b><span>碗米饭热量*</span></div>
+      </div>
+      <p class="foot">* 全部订单热量约 5764 kcal，按一碗米饭 290 kcal 换算（含套餐子项估算）<br>你的人格类型：午餐精准干饭人 · 数据 order-list / query-order / list-nutrition-foods</p></section>
+<section class="page "><div class="pin"></div>
+          <div class="kicker">第一章 · 一切的开始</div>
+          <h2>第一口，被记住了</h2>
+          <div class="polaroid"><img class="food" src="https://menu-img.mcd.cn/pcm/prod/menu/20251215/product/MS_9900004236_320_1.gif" alt=""><span class="polaroid-date">2026-05-15</span></div>
+          <div class="lines"><p>2026-05-15 18:54，麦当劳北京海淀中街(巴比伦时尚酒店)餐厅。</p><p><p>你吃下了被记录的第一单：人气超值四件套随心选。</p></div>
+          <div class="combo">双层脆鸡堡 ＋ 小杯玉米杯 ＋ 麦乐鸡4块 ＋ 无糖可口可乐中杯</div>
+          <div class="note">实付 ¥28 · 数据 order-list</div></section>
+<section class="page "><div class="pin"></div>
+          <div class="kicker">第二章 · 专属口味</div>
+          <h2>快乐要有，糖分不要</h2>
+          
+          <div class="lines"><p>「无糖可口可乐中杯」在你的订单里出现了 5 次。</p><p><p>每一单都是同一个坚持——快乐水照喝，糖分免谈。养生朋克的尽头，是麦门。</p></div>
+          
+          <div class="note">数据 query-order · comboItemList</div></section>
+<section class="page "><div class="pin"></div>
+          <div class="kicker">第三章 · 信仰之选</div>
+          <h2>这不是点餐，是信仰</h2>
+          
+          <div class="lines"><p>「人气超值四件套随心选」出现了 6 次。</p><p><p>10 单里有 6 单是它——60% 的麦门人生，都是同一个味道。</p></div>
+          
+          <div class="note">数据 order-list · 商品统计</div></section>
+<section class="page "><div class="pin"></div>
+          <div class="kicker">第四章 · 那一次出走</div>
+          <h2>忠诚之外的一天</h2>
+          <div class="polaroid"><img class="food" src="https://menu-img.mcd.cn/pcm/prod/menu/20260731/product/MS_9900004236_320.gif" alt=""><span class="polaroid-date">2026-08-14</span></div>
+          <div class="lines"><p>2026-08-14，你离开了常驻的北京海淀中街店…</p><p><p>去了 麦当劳北京北苑秋实路餐厅。仅此一次。</p><p><p>9 : 1 的忠诚比，麦门认证死忠粉。</p></div>
+          <div class="combo">双层脆鸡堡 ＋ 中薯条 ＋ 麦乐鸡4块 ＋ 阳光柠檬红茶中杯 冰(去冰)</div>
+          <div class="note">数据 order-list · storeName</div></section>
+<section class="page "><div class="pin"></div>
+          <div class="kicker">第五章 · 精算师时刻</div>
+          <h2>最划算的一顿</h2>
+          <div class="polaroid"><img class="food" src="https://menu-img.mcd.cn/pcm/prod/menu/20251215/product/MS_9900004236_320_1.gif" alt=""><span class="polaroid-date">2026-06-11</span></div>
+          <div class="lines"><p>2026-06-11 的这一单：</p><p><p>原价 ¥76，一张「超值4件套」之后，实付 ¥42。</p><p><p>省下 ¥34 —— 相当于白吃一个巨无霸还有找。</p></div>
+          <div class="combo">麦辣鸡腿汉堡 ＋ 中薯条 ＋ 麦乐鸡4块 ＋ 可乐中杯 冰(去冰)</div>
+          <div class="note">数据 query-order · totalDiscountAmount</div></section>
+<section class="page plain"><div class="pin"></div>
+      <div class="kicker">麦门生物钟</div>
+      <h2>你的指针，比地铁还准</h2>
+      <svg viewBox="0 0 300 300" width="240" height="240" style="max-width:64vw"><circle cx="150" cy="150" r="140" fill="#fff" stroke="#FFC72C" stroke-width="10"/><line x1="270.0" y1="150.0" x2="282.0" y2="150.0" stroke="#D8C8A2" stroke-width="3"/><line x1="253.9" y1="210.0" x2="264.3" y2="216.0" stroke="#D8C8A2" stroke-width="3"/><line x1="210.0" y1="253.9" x2="216.0" y2="264.3" stroke="#D8C8A2" stroke-width="3"/><line x1="150.0" y1="270.0" x2="150.0" y2="282.0" stroke="#D8C8A2" stroke-width="3"/><line x1="90.0" y1="253.9" x2="84.0" y2="264.3" stroke="#D8C8A2" stroke-width="3"/><line x1="46.1" y1="210.0" x2="35.7" y2="216.0" stroke="#D8C8A2" stroke-width="3"/><line x1="30.0" y1="150.0" x2="18.0" y2="150.0" stroke="#D8C8A2" stroke-width="3"/><line x1="46.1" y1="90.0" x2="35.7" y2="84.0" stroke="#D8C8A2" stroke-width="3"/><line x1="90.0" y1="46.1" x2="84.0" y2="35.7" stroke="#D8C8A2" stroke-width="3"/><line x1="150.0" y1="30.0" x2="150.0" y2="18.0" stroke="#D8C8A2" stroke-width="3"/><line x1="210.0" y1="46.1" x2="216.0" y2="35.7" stroke="#D8C8A2" stroke-width="3"/><line x1="253.9" y1="90.0" x2="264.3" y2="84.0" stroke="#D8C8A2" stroke-width="3"/><line x1="150" y1="150" x2="160.9" y2="91.0" stroke="#2B1D0E" stroke-width="10" stroke-linecap="round"/><line x1="150" y1="150" x2="227.7" y2="206.4" stroke="#DA291C" stroke-width="5" stroke-linecap="round"/><circle cx="150" cy="150" r="10" fill="#DA291C"/><text x="150" y="212" text-anchor="middle" font-size="22" font-weight="800" fill="#DA291C">12:21</text></svg>
+      <p class="lead">10 单里 7 单落在你中位点餐时间的 ±90 分钟内。</p>
+      <svg viewBox="0 0 560 150" width="520" height="139" style="max-width:88vw"><defs><pattern id="goldhatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#FFC72C" opacity="0.30"/><line x1="0" y1="0" x2="0" y2="8" stroke="#FFC72C" stroke-width="3" opacity="0.55"/></pattern></defs><rect x="259" y="16" width="42" height="100" fill="url(#goldhatch)" rx="10"/><text x="280" y="34" text-anchor="middle" font-size="12" font-weight="700" fill="#2B1D0E">午间黄金档</text><line x1="26" y1="120" x2="534" y2="120" stroke="#C9B98F" stroke-width="1.5"/><text x="534" y="34" text-anchor="end" font-size="12" fill="#DA291C" font-weight="700">7/10 单命中 ±90min</text><circle cx="269" cy="114" r="6" fill="#DA291C"/><circle cx="269" cy="99" r="6" fill="#DA291C"/><circle cx="269" cy="84" r="6" fill="#DA291C"/><circle cx="291" cy="114" r="6" fill="#DA291C"/><circle cx="291" cy="99" r="6" fill="#DA291C"/><circle cx="291" cy="84" r="6" fill="#DA291C"/><circle cx="291" cy="69" r="6" fill="#DA291C"/><circle cx="418" cy="114" r="6" fill="#C99700"/><circle cx="439" cy="114" r="6" fill="#C99700"/><circle cx="439" cy="99" r="6" fill="#C99700"/><text x="26" y="140" text-anchor="middle" font-size="10" fill="#B4A78F">0:00</text><text x="153" y="140" text-anchor="middle" font-size="10" fill="#B4A78F">6:00</text><text x="280" y="140" text-anchor="middle" font-size="10" fill="#B4A78F">12:00</text><text x="407" y="140" text-anchor="middle" font-size="10" fill="#B4A78F">18:00</text><text x="534" y="140" text-anchor="middle" font-size="10" fill="#B4A78F">24:00</text></svg>
+      <p class="foot">午间黄金档一柱擎天，其余时段静悄悄——你不是饿了才来，是排班表里写着麦当劳。<br>数据 order-list · createTime</p></section>
+<section class="page gold"><div class="pin"></div>
+      <div class="kicker">麦门人格鉴定书</div>
+      <div class="cert">
+        <p class="cert-line">兹证明该名麦门人，经官方 MCP 数据严格鉴定为——</p>
+        <div class="cert-title">午间钉子户</div>
+        <svg viewBox="0 0 300 280" width="250" height="233" style="max-width:64vw"><polygon points="150.0,96.0 192.0,138.0 150.0,180.0 108.0,138.0" fill="none" stroke="#D8C8A2" stroke-width="1"/><polygon points="150.0,54.0 234.0,138.0 150.0,222.0 66.0,138.0" fill="none" stroke="#D8C8A2" stroke-width="1"/><line x1="150" y1="138" x2="150.0" y2="54.0" stroke="#E4D8BC" stroke-width="1"/><line x1="150" y1="138" x2="234.0" y2="138.0" stroke="#E4D8BC" stroke-width="1"/><line x1="150" y1="138" x2="150.0" y2="222.0" stroke="#E4D8BC" stroke-width="1"/><line x1="150" y1="138" x2="66.0" y2="138.0" stroke="#E4D8BC" stroke-width="1"/><polygon points="150.0,79.2 225.6,138.0 150.0,213.6 99.6,138.0" fill="#FFC72C" opacity="0.55" stroke="#DA291C" stroke-width="2"/><text x="150.0" y="32.0" text-anchor="middle" font-size="13" font-weight="700" fill="#2B1D0E">规律 70</text><text x="260.0" y="142.0" text-anchor="middle" font-size="13" font-weight="700" fill="#2B1D0E">自律 90</text><text x="150.0" y="252.0" text-anchor="middle" font-size="13" font-weight="700" fill="#2B1D0E">忠诚 90</text><text x="40.0" y="142.0" text-anchor="middle" font-size="13" font-weight="700" fill="#2B1D0E">专一 60</text></svg>
+        <div class="cert-tags"><span>自带无糖结界</span><span>中位点餐 12:21</span><span>忠诚度 90%</span></div>
+        <p class="cert-note">麦力值 <b>77.5</b> / 100 · 超越了全国 <b>99%</b> 的麦门人*</p>
+        <div class="seal"><svg viewBox="0 0 100 100" width="56" height="56" role="img" aria-label="麦门勋章"><circle cx="50" cy="50" r="47" fill="#FFC72C" stroke="#C99700" stroke-width="2.5"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#C99700" stroke-width="2.2" stroke-dasharray="1.6 3.6"/><circle cx="50" cy="50" r="35" fill="none" stroke="#C99700" stroke-width="1" opacity=".75"/><path d="M 33 61 A 11.5 17.5 0 0 1 50 36 A 11.5 17.5 0 0 1 67 61" fill="none" stroke="#DA291C" stroke-width="7" stroke-linecap="round"/></svg></div>
+        <p class="foot">* 规则模板计算，仅供娱乐 · 四维：规律70 自律90 忠诚90 专一60<br>数据 order-list / query-order</p>
+      </div></section>
+<section class="page lit"><div class="pin"></div>
+      <div class="lit">
+        <div class="lit-quote0"><p>人生没有白走的路，<br>只有白点的薯条。</p><p class="lit-note">第 10 单 · 共 ¥325.3</p></div><div class="lit-quote1"><p>你省下的每一分钱，<br>都是麦门写给你的情书。</p><p class="lit-note">累计省下 ¥224.2</p></div><div class="lit-quote2"><p>别人记账，你记的是日子。</p><p class="lit-note">114 天 · 10 个章节</p></div><div class="lit-quote3"><p>有些忠诚不需要理由，<br>比如你和中薯条。</p><p class="lit-note">「人气超值四件套随心选」× 6</p></div><div class="lit-quote4"><p>十二点的钟声不为谁而鸣，<br>除了你的胃。</p><p class="lit-note">中位赴约 12:21</p></div><div class="lit-quote5"><p>积分会过期，爱不会。</p><p class="lit-note">可用 564.3 分，别再弄丢</p></div><div class="lit-quote6"><p>巨无霸是永恒的，<br>减脂是间歇的。</p><p class="lit-note">≈19.9 碗米饭，值了</p></div><div class="lit-quote7"><p>门一直在那儿，<br>你随时可以推。</p><p class="lit-note">2 家门店的灯都亮着</p></div><div class="lit-quote8"><p>麦门不看朋友圈，<br>但麦门记得你每一单。</p><p class="lit-note">第 10 单，永久收藏</p></div><div class="lit-quote9"><p>快乐有很多种，<br>你的这一种是金黄色的。</p><p class="lit-note">季节限定 · SEASON 1</p></div>
+        <button class="lit-reroll" onclick="rerollLit()" aria-label="换一句">⟳</button>
+        <div class="lit-motto">麦门。</div>
+        <p class="foot">—— 麦门文学 · 点 ⟳ 换一句 · 每句都藏着你的真实数据</p>
+      </div></section>
+<section class="page warn"><div class="pin"></div>
+          <div class="kicker">寻人启事</div>
+          <h2>麦门失踪人口</h2>
+          <div class="missing">
+            <b class="count" data-n="35">0</b><span>天</span>
+          </div>
+          <p class="lead">你已经 <b>35</b> 天没有出现在麦当劳了。</p>
+          <p class="lead dim">而你的历史平均，每 <b>12.3</b> 天就要见一次麦门。<br>现在这个间隔，是平时的 <b>2.8</b> 倍。</p>
+          <p class="missing-line">卡包里 11 张券和 564.3 分积分，都在等你回来翻这本书。</p>
+          <p class="foot">数据 order-list（最后一单 2026-09-07）· query-my-coupons / query-my-account</p></section>
+<section class="page plain"><div class="pin"></div>
+          <h2>汉堡天平</h2>
+          <p class="lead">如果麦当劳按原价收钱，你要花：</p>
+          <div class="bal">
+            <div class="bal-row"><span>原价人生</span>
+              <div class="bar orig" style="--w:100%"><i class="gap" style="--gap:40.8%"></i><b>¥549.5</b></div>
+            </div>
+            <div class="bal-row"><span>麦门实付</span>
+              <div class="bar paid" style="--w:59.2%"><b>¥325.3</b></div>
+            </div>
+          </div>
+          <p class="big-save">省下 <b class="count" data-n="224.2" data-f="1">0</b> 元 <span class="save-pct">（约 40.8%）</span></p>
+          <p class="foot">两条按真实比例绘制 · 金色段 = 省下的部分 · 数据 query-order · totalDiscountAmount 合计</p></section>
+<section class="page plain"><div class="pin"></div>
+          <div class="kicker">积分花园 · GARDEN</div>
+          <h2>你的积分，开成了花</h2>
+          <p class="lead">1135.6 分积分离开了账户，但没有消失——<br>它们和你的每一笔优惠一起，种成了下面这片花园。</p>
+          <div class="garden-scene"><svg viewBox="0 0 680 380" width="100%" style="max-width:660px;border-radius:18px;display:block;margin:0 auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="积分花园"><defs><linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ECFF2"/><stop offset=".55" stop-color="#C8E9FA"/><stop offset="1" stop-color="#EAF7E2"/></linearGradient><linearGradient id="gGrass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#79C258"/><stop offset="1" stop-color="#549B3E"/></linearGradient><radialGradient id="pRed" cx="35%" cy="30%"><stop offset="0" stop-color="#FFB3A0"/><stop offset=".6" stop-color="#FF6B5A"/><stop offset="1" stop-color="#E24B3A"/></radialGradient><radialGradient id="pGold" cx="35%" cy="30%"><stop offset="0" stop-color="#FFF3B8"/><stop offset=".6" stop-color="#FFD34D"/><stop offset="1" stop-color="#F5A700"/></radialGradient><radialGradient id="pPink" cx="35%" cy="30%"><stop offset="0" stop-color="#FFD9EC"/><stop offset=".6" stop-color="#F4A8CE"/><stop offset="1" stop-color="#E886B8"/></radialGradient><radialGradient id="pBlue" cx="35%" cy="30%"><stop offset="0" stop-color="#C8ECFF"/><stop offset=".6" stop-color="#8FCDEE"/><stop offset="1" stop-color="#5FA8D3"/></radialGradient><radialGradient id="pCore" cx="35%" cy="30%"><stop offset="0" stop-color="#FFF6D8"/><stop offset="1" stop-color="#E2A800"/></radialGradient><filter id="soft2" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#1F3A12" flood-opacity=".22"/></filter></defs><rect width="680" height="380" fill="url(#gSky)"/><ellipse cx="110" cy="34" rx="44" ry="14" fill="#fff" opacity="0.85"/><ellipse cx="340" cy="46" rx="34" ry="11" fill="#fff" opacity="0.75"/><ellipse cx="570" cy="58" rx="44" ry="14" fill="#fff" opacity="0.6499999999999999"/><ellipse cx="20" cy="144" rx="52" ry="20" fill="#4E9E3C"/><ellipse cx="10" cy="138" rx="30" ry="12" fill="#5FB04A" opacity=".8"/><ellipse cx="100" cy="144" rx="52" ry="20" fill="#4E9E3C"/><ellipse cx="90" cy="138" rx="30" ry="12" fill="#5FB04A" opacity=".8"/><ellipse cx="180" cy="144" rx="52" ry="20" fill="#4E9E3C"/><ellipse cx="170" cy="138" rx="30" ry="12" fill="#5FB04A" opacity=".8"/><ellipse cx="260" cy="144" rx="52" ry="20" fill="#4E9E3C"/><ellipse cx="250" cy="138" rx="30" ry="12" fill="#5FB04A" opacity=".8"/><ellipse cx="340" cy="144" rx="52" ry="20" fill="#4E9E3C"/><ellipse cx="330" cy="138" rx="30" ry="12" fill="#5FB04A" opacity=".8"/><ellipse cx="420" cy="144" rx="52" ry="20" fill="#4E9E3C"/><ellipse cx="410" cy="138" rx="30" ry="12" fill="#5FB04A" opacity=".8"/><ellipse cx="500" cy="144" rx="52" ry="20" fill="#4E9E3C"/><ellipse cx="490" cy="138" rx="30" ry="12" fill="#5FB04A" opacity=".8"/><ellipse cx="580" cy="144" rx="52" ry="20" fill="#4E9E3C"/><ellipse cx="570" cy="138" rx="30" ry="12" fill="#5FB04A" opacity=".8"/><ellipse cx="660" cy="144" rx="52" ry="20" fill="#4E9E3C"/><ellipse cx="650" cy="138" rx="30" ry="12" fill="#5FB04A" opacity=".8"/><path d="M 0 150 L 340.0 104 L 680 150 L 680 380 L 0 380 Z" fill="url(#gGrass)"/><path d="M 0 150 L 340.0 104 L 680 150" fill="none" stroke="#69B14E" stroke-width="3" opacity=".7"/><ellipse cx="180" cy="268" rx="58" ry="19" fill="none" stroke="#5CA845" stroke-width="2"/><ellipse cx="265" cy="268" rx="50" ry="16" fill="none" stroke="#5CA845" stroke-width="2"/><ellipse cx="350" cy="268" rx="42" ry="19" fill="none" stroke="#5CA845" stroke-width="2"/><ellipse cx="435" cy="268" rx="58" ry="16" fill="none" stroke="#5CA845" stroke-width="2"/><ellipse cx="520" cy="268" rx="50" ry="19" fill="none" stroke="#5CA845" stroke-width="2"/><ellipse cx="605" cy="268" rx="42" ry="16" fill="none" stroke="#5CA845" stroke-width="2"/><ellipse cx="340" cy="246" rx="255" ry="74" fill="#C9A06B" opacity=".5"/><ellipse cx="340" cy="246" rx="255" ry="74" fill="none" stroke="#A87F4C" stroke-width="2" opacity=".45"/><circle cx="80" cy="190" r="3" fill="#FFF8E7" opacity="0.25"/><circle cx="177" cy="214" r="5" fill="#FFF8E7" opacity="0.22"/><circle cx="274" cy="238" r="7" fill="#FFF8E7" opacity="0.19"/><circle cx="371" cy="190" r="3" fill="#FFF8E7" opacity="0.16"/><circle cx="468" cy="214" r="5" fill="#FFF8E7" opacity="0.13"/><circle cx="565" cy="238" r="7" fill="#FFF8E7" opacity="0.1"/><g class="flower" transform="translate(90.0 238)"><path d="M 0 0 C -3 -29.504705882352944 3 -51.63323529411765 0 -73.76176470588236" fill="none" stroke="#3E8E3E" stroke-width="6" stroke-linecap="round"/><path d="M -2 -30.97994117647059 Q -22 -36.88088235294118 -30 -25.079000000000004 Q -12 -17.702823529411766 -2 -30.97994117647059" fill="#5CBF4E"/><path d="M 2 -44.25705882352941 Q 22 -50.15800000000001 28 -38.356117647058824 Q 10 -30.97994117647059 2 -44.25705882352941" fill="#4FAF41"/><ellipse cx="0" cy="2" rx="26" ry="7" fill="#2B1D0E" opacity=".12"/><g transform="translate(0 -83.76176470588236)"><ellipse cx="0.0" cy="-15.0" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(0 0.0 -15.0)" class="petal" style="--d:0ms"/><ellipse cx="10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(45 10.6 -10.6)" class="petal" style="--d:0ms"/><ellipse cx="15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(90 15.0 0.0)" class="petal" style="--d:0ms"/><ellipse cx="10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(135 10.6 10.6)" class="petal" style="--d:0ms"/><ellipse cx="0.0" cy="15.0" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(180 0.0 15.0)" class="petal" style="--d:0ms"/><ellipse cx="-10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(225 -10.6 10.6)" class="petal" style="--d:0ms"/><ellipse cx="-15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(270 -15.0 0.0)" class="petal" style="--d:0ms"/><ellipse cx="-10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(315 -10.6 -10.6)" class="petal" style="--d:0ms"/><circle r="8.5" fill="url(#pCore)"/></g><g class="date-tag" transform="translate(0 14)"><text x="0" y="10" text-anchor="middle" font-size="8.5" fill="#5C3A12" opacity=".75">05-15</text></g></g><g class="flower" transform="translate(161.42857142857144 254)"><path d="M 0 0 C -3 -32.24 3 -56.42 0 -80.60000000000001" fill="none" stroke="#3E8E3E" stroke-width="6" stroke-linecap="round"/><path d="M -2 -33.852000000000004 Q -22 -40.300000000000004 -30 -27.404000000000003 Q -12 -19.344 -2 -33.852000000000004" fill="#5CBF4E"/><path d="M 2 -48.36000000000001 Q 22 -54.80800000000001 28 -41.912000000000006 Q 10 -33.852000000000004 2 -48.36000000000001" fill="#4FAF41"/><ellipse cx="0" cy="2" rx="26" ry="7" fill="#2B1D0E" opacity=".12"/><g transform="translate(0 -90.60000000000001)"><ellipse cx="0.0" cy="-15.0" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(0 0.0 -15.0)" class="petal" style="--d:90ms"/><ellipse cx="10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(45 10.6 -10.6)" class="petal" style="--d:90ms"/><ellipse cx="15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(90 15.0 0.0)" class="petal" style="--d:90ms"/><ellipse cx="10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(135 10.6 10.6)" class="petal" style="--d:90ms"/><ellipse cx="0.0" cy="15.0" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(180 0.0 15.0)" class="petal" style="--d:90ms"/><ellipse cx="-10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(225 -10.6 10.6)" class="petal" style="--d:90ms"/><ellipse cx="-15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(270 -15.0 0.0)" class="petal" style="--d:90ms"/><ellipse cx="-10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(315 -10.6 -10.6)" class="petal" style="--d:90ms"/><circle r="8.5" fill="url(#pCore)"/></g><g class="date-tag" transform="translate(0 14)"><text x="0" y="10" text-anchor="middle" font-size="8.5" fill="#5C3A12" opacity=".75">06-11</text></g></g><g class="flower" transform="translate(232.85714285714286 270)"><path d="M 0 0 C -3 -29.504705882352944 3 -51.63323529411765 0 -73.76176470588236" fill="none" stroke="#3E8E3E" stroke-width="6" stroke-linecap="round"/><path d="M -2 -30.97994117647059 Q -22 -36.88088235294118 -30 -25.079000000000004 Q -12 -17.702823529411766 -2 -30.97994117647059" fill="#5CBF4E"/><path d="M 2 -44.25705882352941 Q 22 -50.15800000000001 28 -38.356117647058824 Q 10 -30.97994117647059 2 -44.25705882352941" fill="#4FAF41"/><ellipse cx="0" cy="2" rx="26" ry="7" fill="#2B1D0E" opacity=".12"/><g transform="translate(0 -83.76176470588236)"><ellipse cx="0.0" cy="-15.0" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(0 0.0 -15.0)" class="petal" style="--d:180ms"/><ellipse cx="10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(45 10.6 -10.6)" class="petal" style="--d:180ms"/><ellipse cx="15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(90 15.0 0.0)" class="petal" style="--d:180ms"/><ellipse cx="10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(135 10.6 10.6)" class="petal" style="--d:180ms"/><ellipse cx="0.0" cy="15.0" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(180 0.0 15.0)" class="petal" style="--d:180ms"/><ellipse cx="-10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(225 -10.6 10.6)" class="petal" style="--d:180ms"/><ellipse cx="-15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(270 -15.0 0.0)" class="petal" style="--d:180ms"/><ellipse cx="-10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(315 -10.6 -10.6)" class="petal" style="--d:180ms"/><circle r="8.5" fill="url(#pCore)"/></g><g class="date-tag" transform="translate(0 14)"><text x="0" y="10" text-anchor="middle" font-size="8.5" fill="#5C3A12" opacity=".75">06-18</text></g></g><g class="flower" transform="translate(304.2857142857143 238)"><path d="M 0 0 C -3 -27.042941176470592 3 -47.325147058823525 0 -67.60735294117647" fill="none" stroke="#3E8E3E" stroke-width="6" stroke-linecap="round"/><path d="M -2 -28.395088235294118 Q -22 -33.803676470588236 -30 -22.986500000000003 Q -12 -16.22576470588235 -2 -28.395088235294118" fill="#5CBF4E"/><path d="M 2 -40.56441176470588 Q 22 -45.973000000000006 28 -35.15582352941177 Q 10 -28.395088235294118 2 -40.56441176470588" fill="#4FAF41"/><ellipse cx="0" cy="2" rx="26" ry="7" fill="#2B1D0E" opacity=".12"/><g transform="translate(0 -77.60735294117647)"><ellipse cx="0.0" cy="-15.0" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(0 0.0 -15.0)" class="petal" style="--d:270ms"/><ellipse cx="10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(45 10.6 -10.6)" class="petal" style="--d:270ms"/><ellipse cx="15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(90 15.0 0.0)" class="petal" style="--d:270ms"/><ellipse cx="10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(135 10.6 10.6)" class="petal" style="--d:270ms"/><ellipse cx="0.0" cy="15.0" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(180 0.0 15.0)" class="petal" style="--d:270ms"/><ellipse cx="-10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(225 -10.6 10.6)" class="petal" style="--d:270ms"/><ellipse cx="-15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(270 -15.0 0.0)" class="petal" style="--d:270ms"/><ellipse cx="-10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(315 -10.6 -10.6)" class="petal" style="--d:270ms"/><circle r="8.5" fill="url(#pCore)"/></g><g class="date-tag" transform="translate(0 14)"><text x="0" y="10" text-anchor="middle" font-size="8.5" fill="#5C3A12" opacity=".75">08-11</text></g></g><g class="flower" transform="translate(375.7142857142857 254)"><path d="M 0 0 C -3 -26.76941176470589 3 -46.8464705882353 0 -66.92352941176472" fill="none" stroke="#3E8E3E" stroke-width="6" stroke-linecap="round"/><path d="M -2 -28.107882352941182 Q -22 -33.46176470588236 -30 -22.754000000000005 Q -12 -16.06164705882353 -2 -28.107882352941182" fill="#5CBF4E"/><path d="M 2 -40.15411764705883 Q 22 -45.50800000000001 28 -34.800235294117655 Q 10 -28.107882352941182 2 -40.15411764705883" fill="#4FAF41"/><ellipse cx="0" cy="2" rx="26" ry="7" fill="#2B1D0E" opacity=".12"/><g transform="translate(0 -76.92352941176472)"><ellipse cx="0.0" cy="-15.0" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(0 0.0 -15.0)" class="petal" style="--d:360ms"/><ellipse cx="10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(45 10.6 -10.6)" class="petal" style="--d:360ms"/><ellipse cx="15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(90 15.0 0.0)" class="petal" style="--d:360ms"/><ellipse cx="10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(135 10.6 10.6)" class="petal" style="--d:360ms"/><ellipse cx="0.0" cy="15.0" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(180 0.0 15.0)" class="petal" style="--d:360ms"/><ellipse cx="-10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(225 -10.6 10.6)" class="petal" style="--d:360ms"/><ellipse cx="-15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(270 -15.0 0.0)" class="petal" style="--d:360ms"/><ellipse cx="-10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pRed)" transform="rotate(315 -10.6 -10.6)" class="petal" style="--d:360ms"/><circle r="8.5" fill="url(#pCore)"/></g><g class="date-tag" transform="translate(0 14)"><text x="0" y="10" text-anchor="middle" font-size="8.5" fill="#5C3A12" opacity=".75">08-14</text></g></g><g class="flower" transform="translate(447.14285714285717 270)"><path d="M 0 0 C -3 -27.042941176470592 3 -47.325147058823525 0 -67.60735294117647" fill="none" stroke="#3E8E3E" stroke-width="6" stroke-linecap="round"/><path d="M -2 -28.395088235294118 Q -22 -33.803676470588236 -30 -22.986500000000003 Q -12 -16.22576470588235 -2 -28.395088235294118" fill="#5CBF4E"/><path d="M 2 -40.56441176470588 Q 22 -45.973000000000006 28 -35.15582352941177 Q 10 -28.395088235294118 2 -40.56441176470588" fill="#4FAF41"/><ellipse cx="0" cy="2" rx="26" ry="7" fill="#2B1D0E" opacity=".12"/><g transform="translate(0 -77.60735294117647)"><ellipse cx="0.0" cy="-15.0" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(0 0.0 -15.0)" class="petal" style="--d:450ms"/><ellipse cx="10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(45 10.6 -10.6)" class="petal" style="--d:450ms"/><ellipse cx="15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(90 15.0 0.0)" class="petal" style="--d:450ms"/><ellipse cx="10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(135 10.6 10.6)" class="petal" style="--d:450ms"/><ellipse cx="0.0" cy="15.0" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(180 0.0 15.0)" class="petal" style="--d:450ms"/><ellipse cx="-10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(225 -10.6 10.6)" class="petal" style="--d:450ms"/><ellipse cx="-15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(270 -15.0 0.0)" class="petal" style="--d:450ms"/><ellipse cx="-10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pGold)" transform="rotate(315 -10.6 -10.6)" class="petal" style="--d:450ms"/><circle r="8.5" fill="url(#pCore)"/></g><g class="date-tag" transform="translate(0 14)"><text x="0" y="10" text-anchor="middle" font-size="8.5" fill="#5C3A12" opacity=".75">08-21</text></g></g><g class="flower" transform="translate(518.5714285714286 238)"><path d="M 0 0 C -3 -29.832941176470595 3 -52.20764705882353 0 -74.58235294117648" fill="none" stroke="#3E8E3E" stroke-width="6" stroke-linecap="round"/><path d="M -2 -31.324588235294122 Q -22 -37.29117647058824 -30 -25.358000000000004 Q -12 -17.899764705882355 -2 -31.324588235294122" fill="#5CBF4E"/><path d="M 2 -44.74941176470589 Q 22 -50.71600000000001 28 -38.78282352941177 Q 10 -31.324588235294122 2 -44.74941176470589" fill="#4FAF41"/><ellipse cx="0" cy="2" rx="26" ry="7" fill="#2B1D0E" opacity=".12"/><g transform="translate(0 -84.58235294117648)"><ellipse cx="0.0" cy="-15.0" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(0 0.0 -15.0)" class="petal" style="--d:540ms"/><ellipse cx="10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(45 10.6 -10.6)" class="petal" style="--d:540ms"/><ellipse cx="15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(90 15.0 0.0)" class="petal" style="--d:540ms"/><ellipse cx="10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(135 10.6 10.6)" class="petal" style="--d:540ms"/><ellipse cx="0.0" cy="15.0" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(180 0.0 15.0)" class="petal" style="--d:540ms"/><ellipse cx="-10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(225 -10.6 10.6)" class="petal" style="--d:540ms"/><ellipse cx="-15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(270 -15.0 0.0)" class="petal" style="--d:540ms"/><ellipse cx="-10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pPink)" transform="rotate(315 -10.6 -10.6)" class="petal" style="--d:540ms"/><circle r="8.5" fill="url(#pCore)"/></g><g class="date-tag" transform="translate(0 14)"><text x="0" y="10" text-anchor="middle" font-size="8.5" fill="#5C3A12" opacity=".75">09-02</text></g></g><g class="flower" transform="translate(590.0 254)"><path d="M 0 0 C -3 -29.832941176470595 3 -52.20764705882353 0 -74.58235294117648" fill="none" stroke="#3E8E3E" stroke-width="6" stroke-linecap="round"/><path d="M -2 -31.324588235294122 Q -22 -37.29117647058824 -30 -25.358000000000004 Q -12 -17.899764705882355 -2 -31.324588235294122" fill="#5CBF4E"/><path d="M 2 -44.74941176470589 Q 22 -50.71600000000001 28 -38.78282352941177 Q 10 -31.324588235294122 2 -44.74941176470589" fill="#4FAF41"/><ellipse cx="0" cy="2" rx="26" ry="7" fill="#2B1D0E" opacity=".12"/><g transform="translate(0 -84.58235294117648)"><ellipse cx="0.0" cy="-15.0" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(0 0.0 -15.0)" class="petal" style="--d:630ms"/><ellipse cx="10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(45 10.6 -10.6)" class="petal" style="--d:630ms"/><ellipse cx="15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(90 15.0 0.0)" class="petal" style="--d:630ms"/><ellipse cx="10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(135 10.6 10.6)" class="petal" style="--d:630ms"/><ellipse cx="0.0" cy="15.0" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(180 0.0 15.0)" class="petal" style="--d:630ms"/><ellipse cx="-10.6" cy="10.6" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(225 -10.6 10.6)" class="petal" style="--d:630ms"/><ellipse cx="-15.0" cy="0.0" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(270 -15.0 0.0)" class="petal" style="--d:630ms"/><ellipse cx="-10.6" cy="-10.6" rx="9.5" ry="13.5" fill="url(#pBlue)" transform="rotate(315 -10.6 -10.6)" class="petal" style="--d:630ms"/><circle r="8.5" fill="url(#pCore)"/></g><g class="date-tag" transform="translate(0 14)"><text x="0" y="10" text-anchor="middle" font-size="8.5" fill="#5C3A12" opacity=".75">09-07</text></g></g><g class="sprout" transform="translate(650.0 250)" onclick="waterFlower(this,10)"><ellipse cx="0" cy="2" rx="20" ry="6" fill="#2B1D0E" opacity=".10"/><path d="M 0 0 Q -2 -9 0 -14" fill="none" stroke="#7FA86B" stroke-width="4.5" stroke-linecap="round"/><path d="M 0 -9 Q -9 -13 -11 -6 Q -4 -4 0 -9" fill="#9CC98A"/><path d="M 0 -7 Q 9 -11 11 -4 Q 4 -2 0 -7" fill="#8FBA7C"/><circle class="glint" cx="12" cy="-14" r="3" fill="#7FC8E8" opacity="0"/><text x="0" y="16" text-anchor="middle" font-size="8.5" fill="#5C3A12" opacity=".6"></text></g><g class="sprout" transform="translate(705.0 250)" onclick="waterFlower(this,11)"><ellipse cx="0" cy="2" rx="20" ry="6" fill="#2B1D0E" opacity=".10"/><path d="M 0 0 Q -2 -9 0 -14" fill="none" stroke="#7FA86B" stroke-width="4.5" stroke-linecap="round"/><path d="M 0 -9 Q -9 -13 -11 -6 Q -4 -4 0 -9" fill="#9CC98A"/><path d="M 0 -7 Q 9 -11 11 -4 Q 4 -2 0 -7" fill="#8FBA7C"/><circle class="glint" cx="12" cy="-14" r="3" fill="#7FC8E8" opacity="0"/><text x="0" y="16" text-anchor="middle" font-size="8.5" fill="#5C3A12" opacity=".6"></text></g><path class="fall-petal" style="--fd:0.0s;--fx:40px" d="M 0 0 Q 4 3 0 7 Q -4 3 0 0" fill="#DA291C" opacity=".5" transform="translate(0 0)"/><path class="fall-petal" style="--fd:1.7s;--fx:207px" d="M 0 0 Q 4 3 0 7 Q -4 3 0 0" fill="#DA291C" opacity=".5" transform="translate(0 0)"/><path class="fall-petal" style="--fd:3.4s;--fx:374px" d="M 0 0 Q 4 3 0 7 Q -4 3 0 0" fill="#DA291C" opacity=".5" transform="translate(0 0)"/><path class="fall-petal" style="--fd:5.1s;--fx:541px" d="M 0 0 Q 4 3 0 7 Q -4 3 0 0" fill="#DA291C" opacity=".5" transform="translate(0 0)"/><path class="fall-petal" style="--fd:6.8s;--fx:108px" d="M 0 0 Q 4 3 0 7 Q -4 3 0 0" fill="#DA291C" opacity=".5" transform="translate(0 0)"/><g transform="translate(96 242)" filter="url(#soft2)"><rect x="-3" y="10" width="7" height="30" rx="3" fill="#8A5A28"/><rect x="-56" y="-20" width="112" height="34" rx="7" fill="#C9A06B"/><rect x="-56" y="-20" width="112" height="12" rx="7" fill="#D9B37E"/><circle cx="-48" y="-13" r="1.8" fill="#8A5A28" opacity=".7"/><circle cx="48" cy="-13" r="1.8" fill="#8A5A28" opacity=".7"/><circle cx="0" cy="-13" r="1.8" fill="#8A5A28" opacity=".7"/><text x="0" y="4" text-anchor="middle" font-size="13" font-weight="800" fill="#5C3A12">积分花园</text></g><g transform="translate(588 258)" filter="url(#soft2)" onclick="waterAll()" style="cursor:pointer"><rect x="-20" y="-16" width="40" height="30" rx="9" fill="#7FC8E8"/><rect x="-20" y="-16" width="40" height="11" rx="7" fill="#A8DCF0"/><path d="M 18 -9 Q 36 -12 40 4" fill="none" stroke="#7FC8E8" stroke-width="5.5" stroke-linecap="round"/><circle cx="42" cy="7" r="4.5" fill="#A8DCF0"/><path d="M -20 -7 Q -31 -9 -29 2 Q -24 7 -18 3" fill="none" stroke="#7FC8E8" stroke-width="4.5" stroke-linecap="round"/><text x="0" y="30" text-anchor="middle" font-size="11" font-weight="800" fill="#2B6D9E">浇水</text></g><g transform="translate(590 26)"><rect x="-72" y="0" width="144" height="34" rx="17" fill="#FFF8E7" opacity=".95" filter="url(#soft2)"/><circle cx="-52" cy="17" r="10" fill="#FFC72C"/><text class="garden-count" x="-34" y="22" font-size="13" font-weight="800" fill="#2B1D0E">0 / 8 已开花</text></g><text x="340" y="370" text-anchor="middle" font-size="11" fill="#2F5D24" opacity=".95">每朵花 = 一笔真实优惠订单 · 浇水让它们全开 · 数据 query-order / query-my-account</text></svg></div>
+          <p class="garden-hidden" style="opacity:0;font-weight:800;color:var(--red);text-align:center;transition:opacity .6s">看，浪费也能开花。</p>
+          <p class="foot bright">当前可用 564.3 分 · 过期率 66.5%<br>数据 query-my-account / query-order · 别让新的积分再凋谢，常回来浇浇</p></section>
+<section class="page plain"><div class="pin"></div>
+          <div class="kicker">忏悔室 · CONFESSION</div>
+          <h2>麦门忏悔室</h2>
+          <div class="sin-card" style="--i:0">
+              <span class="sin-no">第 1 宗罪</span>
+              <b class="sin-name">花期误了</b>
+              <p class="sin-text">你的 1135 分积分没能撑到兑现那天。不过别难过——它们已经在花园里开成了 50.5 朵小花。</p>
+              <span class="sin-src">数据 query-my-account</span>
+            </div><div class="sin-card" style="--i:1">
+              <span class="sin-no">第 2 宗罪</span>
+              <b class="sin-name">从一而终</b>
+              <p class="sin-text">你把 60% 的麦门人生给了「人气超值四件套随心选」。菜单上有 160 种可能，你选了命中注定的那一种。</p>
+              <span class="sin-src">数据 order-list · 商品统计</span>
+            </div><div class="sin-card" style="--i:2">
+              <span class="sin-no">第 3 宗罪</span>
+              <b class="sin-name">朋克养生</b>
+              <p class="sin-text">你点了 5 次「无糖可口可乐中杯」——配着炸鸡和薯条。快乐水戒了糖，没戒快乐，这叫战略性养生。</p>
+              <span class="sin-src">数据 query-order · comboItemList</span>
+            </div><div class="sin-card" style="--i:3">
+              <span class="sin-no">第 4 宗罪</span>
+              <b class="sin-name">深宅不出</b>
+              <p class="sin-text">全城 2 家麦门，90% 的饭你都进了同一家。你不是食客，你是编外员工。</p>
+              <span class="sin-src">数据 order-list · storeName</span>
+            </div><div class="sin-card" style="--i:4">
+              <span class="sin-no">第 5 宗罪</span>
+              <b class="sin-name">见死不救</b>
+              <p class="sin-text">4 张券正在离开你，面值约 ¥0.0。你上次想起它们，还是领它们的时候。</p>
+              <span class="sin-src">数据 query-my-coupons</span>
+            </div>
+          
+          <div class="absolve-card">
+            <b class="sin-name">唯一的善行</b>
+            <p class="sin-text">你用券省下了 ¥224.2。麦门看在钱的份上，赦免以上一切罪行。</p>
+            <div class="seal-gold">已赦免</div>
+            <span class="sin-src">数据 query-order · totalDiscountAmount</span>
+          </div>
+          <p class="absolve-motto">以上罪行，麦门一律赦免。<br>—— 愿你继续做快乐的老实人。</p></section>
+<section class="page "><div class="pin"></div>
+          <div class="kicker">勋章收藏 · SEASON 1</div>
+          <h2>节气勋章墙</h2>
+          <p class="lead">积分抽奖抽出的 9 枚节气金币，从春分到白露：</p>
+          <div class="tray"><div class="coins"><div class="coin-wrap" style="--i:0"><svg viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="麦门勋章"><circle cx="50" cy="50" r="47" fill="#FFC72C" stroke="#C99700" stroke-width="2.5"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#C99700" stroke-width="2.2" stroke-dasharray="1.6 3.6"/><circle cx="50" cy="50" r="35" fill="none" stroke="#C99700" stroke-width="1" opacity=".75"/><path d="M 33 61 A 11.5 17.5 0 0 1 50 36 A 11.5 17.5 0 0 1 67 61" fill="none" stroke="#DA291C" stroke-width="7" stroke-linecap="round"/><text x="50" y="80" text-anchor="middle" font-size="13" font-weight="800" fill="#B71C1C">白露</text></svg></div><div class="coin-wrap" style="--i:1"><svg viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="麦门勋章"><circle cx="50" cy="50" r="47" fill="#FFC72C" stroke="#C99700" stroke-width="2.5"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#C99700" stroke-width="2.2" stroke-dasharray="1.6 3.6"/><circle cx="50" cy="50" r="35" fill="none" stroke="#C99700" stroke-width="1" opacity=".75"/><path d="M 33 61 A 11.5 17.5 0 0 1 50 36 A 11.5 17.5 0 0 1 67 61" fill="none" stroke="#DA291C" stroke-width="7" stroke-linecap="round"/><text x="50" y="80" text-anchor="middle" font-size="13" font-weight="800" fill="#B71C1C">处暑</text></svg></div><div class="coin-wrap" style="--i:2"><svg viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="麦门勋章"><circle cx="50" cy="50" r="47" fill="#FFC72C" stroke="#C99700" stroke-width="2.5"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#C99700" stroke-width="2.2" stroke-dasharray="1.6 3.6"/><circle cx="50" cy="50" r="35" fill="none" stroke="#C99700" stroke-width="1" opacity=".75"/><path d="M 33 61 A 11.5 17.5 0 0 1 50 36 A 11.5 17.5 0 0 1 67 61" fill="none" stroke="#DA291C" stroke-width="7" stroke-linecap="round"/><text x="50" y="80" text-anchor="middle" font-size="13" font-weight="800" fill="#B71C1C">立秋</text></svg></div><div class="coin-wrap" style="--i:3"><svg viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="麦门勋章"><circle cx="50" cy="50" r="47" fill="#FFC72C" stroke="#C99700" stroke-width="2.5"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#C99700" stroke-width="2.2" stroke-dasharray="1.6 3.6"/><circle cx="50" cy="50" r="35" fill="none" stroke="#C99700" stroke-width="1" opacity=".75"/><path d="M 33 61 A 11.5 17.5 0 0 1 50 36 A 11.5 17.5 0 0 1 67 61" fill="none" stroke="#DA291C" stroke-width="7" stroke-linecap="round"/><text x="50" y="80" text-anchor="middle" font-size="13" font-weight="800" fill="#B71C1C">芒种</text></svg></div><div class="coin-wrap" style="--i:4"><svg viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="麦门勋章"><circle cx="50" cy="50" r="47" fill="#FFC72C" stroke="#C99700" stroke-width="2.5"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#C99700" stroke-width="2.2" stroke-dasharray="1.6 3.6"/><circle cx="50" cy="50" r="35" fill="none" stroke="#C99700" stroke-width="1" opacity=".75"/><path d="M 33 61 A 11.5 17.5 0 0 1 50 36 A 11.5 17.5 0 0 1 67 61" fill="none" stroke="#DA291C" stroke-width="7" stroke-linecap="round"/><text x="50" y="80" text-anchor="middle" font-size="13" font-weight="800" fill="#B71C1C">小满</text></svg></div><div class="coin-wrap" style="--i:5"><svg viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="麦门勋章"><circle cx="50" cy="50" r="47" fill="#FFC72C" stroke="#C99700" stroke-width="2.5"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#C99700" stroke-width="2.2" stroke-dasharray="1.6 3.6"/><circle cx="50" cy="50" r="35" fill="none" stroke="#C99700" stroke-width="1" opacity=".75"/><path d="M 33 61 A 11.5 17.5 0 0 1 50 36 A 11.5 17.5 0 0 1 67 61" fill="none" stroke="#DA291C" stroke-width="7" stroke-linecap="round"/><text x="50" y="80" text-anchor="middle" font-size="13" font-weight="800" fill="#B71C1C">立夏</text></svg></div><div class="coin-wrap" style="--i:6"><svg viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="麦门勋章"><circle cx="50" cy="50" r="47" fill="#FFC72C" stroke="#C99700" stroke-width="2.5"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#C99700" stroke-width="2.2" stroke-dasharray="1.6 3.6"/><circle cx="50" cy="50" r="35" fill="none" stroke="#C99700" stroke-width="1" opacity=".75"/><path d="M 33 61 A 11.5 17.5 0 0 1 50 36 A 11.5 17.5 0 0 1 67 61" fill="none" stroke="#DA291C" stroke-width="7" stroke-linecap="round"/><text x="50" y="80" text-anchor="middle" font-size="13" font-weight="800" fill="#B71C1C">谷雨</text></svg></div><div class="coin-wrap" style="--i:7"><svg viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="麦门勋章"><circle cx="50" cy="50" r="47" fill="#FFC72C" stroke="#C99700" stroke-width="2.5"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#C99700" stroke-width="2.2" stroke-dasharray="1.6 3.6"/><circle cx="50" cy="50" r="35" fill="none" stroke="#C99700" stroke-width="1" opacity=".75"/><path d="M 33 61 A 11.5 17.5 0 0 1 50 36 A 11.5 17.5 0 0 1 67 61" fill="none" stroke="#DA291C" stroke-width="7" stroke-linecap="round"/><text x="50" y="80" text-anchor="middle" font-size="13" font-weight="800" fill="#B71C1C">清明</text></svg></div><div class="coin-wrap" style="--i:8"><svg viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="麦门勋章"><circle cx="50" cy="50" r="47" fill="#FFC72C" stroke="#C99700" stroke-width="2.5"/><circle cx="50" cy="50" r="41.5" fill="none" stroke="#C99700" stroke-width="2.2" stroke-dasharray="1.6 3.6"/><circle cx="50" cy="50" r="35" fill="none" stroke="#C99700" stroke-width="1" opacity=".75"/><path d="M 33 61 A 11.5 17.5 0 0 1 50 36 A 11.5 17.5 0 0 1 67 61" fill="none" stroke="#DA291C" stroke-width="7" stroke-linecap="round"/><text x="50" y="80" text-anchor="middle" font-size="13" font-weight="800" fill="#B71C1C">春分</text></svg></div></div></div>
+          <div class="coin-progress"><div class="cp-fill" style="--p:37.5%"></div><span class="cp-label">9 / 24 节气</span></div>
+          <div class="ghost-coin-wrap">
+            <svg viewBox="0 0 100 100" width="56" height="56" aria-hidden="true">
+              <circle cx="50" cy="50" r="46" fill="none" stroke="#C99700" stroke-width="2.5" stroke-dasharray="4 4"/>
+              <text x="50" y="62" text-anchor="middle" font-size="30" font-weight="800" fill="#C99700" opacity=".7">?</text>
+            </svg>
+            <span>隐藏款 · 麦门全知者</span>
+          </div>
+          <p class="foot">距离隐藏款还有 15 个节气 · 在 WorkBuddy 里对 AI 说「帮我抽一次节气勋章」继续集齐<br>数据 query-my-prizes</p></section>
+<section class="page cta"><div class="pin"></div>
+      <div class="stamp-tbc">未完待续</div>
+      <div class="kicker">后记 · NEXT CHAPTER</div>
+      <h2>下一章，由你执笔</h2>
+      <p class="lead">书的最后一页翻过去了，麦门的故事还没有写完。<br>卡包里还有 11 张券，都是提前埋好的伏笔——比如这一张：</p>
+      <div class="cta-coupon">
+          <span class="cc-tag">下一章 · 入场券</span>
+          <span class="cc-name">高达芝士蛋堡早餐两件套</span>
+          <span class="cc-price">¥9.9</span>
+          <span class="cc-exp">有效期至 2026-10-21</span>
+        </div>
+      <p class="foot">在 WorkBuddy 里对 AI 说一句话，让下一章今天开演<br>数据 query-my-coupons · 到手信息以麦当劳 APP 为准</p></section>
+<section class="page plain colophon"><div class="pin"></div>
+      <h2>关于这本书</h2>
+      <p class="about">这本书里的每一个数字，都来自麦当劳官方 MCP（mcp.mcd.cn）的实时查询：
+      order-list · query-order · query-my-account · query-my-coupons · query-my-prizes · list-nutrition-foods。
+      叙事由规则模板生成，所有金额、积分、日期均为真实账户数据，未经任何修改。</p>
+      <p class="about">生成时间：2026-10-10 11:24:18<br>
+      本项目为参赛 demo，与麦当劳官方无关，仅供学习交流。</p>
+      <div class="colophon-line"></div>
+      <div class="logo-mark">M</div>
+      <div class="made-with">MADE WITH MCD MCP</div></section>
+<script>
+// count-up
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('on');
+  e.target.querySelectorAll('[data-n]').forEach(el => {
+    if (el.dataset.done) return; el.dataset.done = 1;
+    const target = parseFloat(el.dataset.n), f = parseInt(el.dataset.f || 0);
+    const t0 = performance.now(), dur = 1100;
+    const tick = t => { const p = Math.min((t - t0) / dur, 1), v = target * (1 - Math.pow(1 - p, 3));
+      el.textContent = f ? v.toFixed(1) : Math.round(v).toLocaleString('zh-CN');
+      if (p < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  });
+}), { threshold: .35 });
+document.querySelectorAll('.page').forEach(p => io.observe(p));
+// literature reroll
+const litQuoteEls = document.querySelectorAll('.lit-quote');
+let litIdx = Math.floor(Math.random() * litQuoteEls.length);
+function showLit(i) { litQuoteEls.forEach((el, j) => el.classList.toggle('on', j === i)); }
+if (litQuoteEls.length) { showLit(litIdx); }
+function rerollLit() {
+  if (!litQuoteEls.length) return;
+  litIdx = (litIdx + 1 + Math.floor(Math.random() * (litQuoteEls.length - 1))) % litQuoteEls.length;
+  showLit(litIdx);
+}
+</script>
+</body>
+</html>
